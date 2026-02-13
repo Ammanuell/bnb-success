@@ -8,7 +8,7 @@ import { auth } from "./firebase";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mode, setMode] = useState("login"); // "login" | "signup"
+  const [mode, setMode] = useState("login");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -35,12 +35,11 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-dvh bg-neutral-950 text-neutral-50 flex items-center justify-center p-6">
-      <div className="w-full max-w-sm rounded-3xl border border-neutral-800 bg-neutral-900/60 p-6 shadow-xl backdrop-blur">
+    <div className="min-h-dvh bg-[#f5f1ea] text-neutral-800 flex items-center justify-center p-6">
+      <div className="w-full max-w-sm rounded-3xl border border-[#e6dfd4] bg-white p-6 shadow-lg">
         <div className="space-y-2">
-          <div className="text-sm text-neutral-400">Shared Spending</div>
           <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
-          <p className="text-sm text-neutral-400">
+          <p className="text-sm text-neutral-500">
             {mode === "login"
               ? "Welcome back. Sign in to continue."
               : "Create an account to start tracking together."}
@@ -51,7 +50,7 @@ export default function Login() {
           <label className="block">
             <span className="sr-only">Email</span>
             <input
-              className="w-full rounded-2xl bg-neutral-950 border border-neutral-800 px-4 py-3 text-base outline-none placeholder:text-neutral-600 focus:border-neutral-600 focus:ring-2 focus:ring-neutral-700"
+              className="w-full rounded-2xl bg-[#faf7f2] border border-[#e6dfd4] px-4 py-3 text-base outline-none placeholder:text-neutral-400 focus:border-[#d6cbbd] focus:ring-2 focus:ring-[#e8dfd3]"
               placeholder="Email"
               type="email"
               inputMode="email"
@@ -63,9 +62,8 @@ export default function Login() {
           </label>
 
           <label className="block">
-            <span className="sr-only">Password</span>
             <input
-              className="w-full rounded-2xl bg-neutral-950 border border-neutral-800 px-4 py-3 text-base outline-none placeholder:text-neutral-600 focus:border-neutral-600 focus:ring-2 focus:ring-neutral-700"
+              className="w-full rounded-2xl bg-[#faf7f2] border border-[#e6dfd4] px-4 py-3 text-base outline-none placeholder:text-neutral-400 focus:border-[#d6cbbd] focus:ring-2 focus:ring-[#e8dfd3]"
               placeholder="Password"
               type="password"
               autoComplete={
@@ -78,7 +76,7 @@ export default function Login() {
           </label>
 
           {error ? (
-            <div className="rounded-2xl border border-red-900/60 bg-red-950/40 px-4 py-3 text-sm text-red-200">
+            <div className="rounded-2xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
               {error}
             </div>
           ) : null}
@@ -86,14 +84,14 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-2xl bg-white text-neutral-900 py-3 font-medium active:scale-[0.99] disabled:opacity-60 disabled:active:scale-100"
+            className="w-full rounded-2xl border border-[#e6dfd4] bg-[#faf7f2]  text-neutral-900 py-3 font-medium hover:bg-[#cfc4b8] active:scale-[0.99] disabled:opacity-60 disabled:active:scale-100 transition"
           >
             {loading ? "Please wait…" : mode === "login" ? "Sign in" : "Sign up"}
           </button>
 
           <button
             type="button"
-            className="w-full rounded-2xl border border-neutral-800 bg-neutral-950 py-3 text-sm text-neutral-200 hover:bg-neutral-900/60 active:scale-[0.99]"
+            className="w-full rounded-2xl border border-[#e6dfd4] bg-[#faf7f2] py-3 text-sm text-neutral-700 hover:bg-[#f2ece4] active:scale-[0.99] transition"
             onClick={() => {
               setError("");
               setMode(mode === "login" ? "signup" : "login");
@@ -104,10 +102,6 @@ export default function Login() {
               : "Already have an account? Sign in"}
           </button>
 
-          <p className="pt-2 text-xs text-neutral-500 leading-relaxed">
-            Tip: keep inputs at 16px+ (Tailwind <code>text-base</code>) to avoid
-            iOS Safari auto-zoom on focus.
-          </p>
         </form>
       </div>
     </div>
